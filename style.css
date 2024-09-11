@@ -1,0 +1,13 @@
+body{
+    background: rgb(212, 212, 212);
+    overflow-x:hidden;
+}
+#img1{
+    width:100vw;
+}
+#sch-container{
+    width:400px;
+    border-right:14px solid black;
+    border-bottom:14px solid black;
+    height:100px;
+}
