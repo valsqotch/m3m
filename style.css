@@ -1,13 +1,27 @@
+*{
+    margin:0px;
+}
 body{
-    background: rgb(212, 212, 212);
+    background: rgb(215, 215, 215);
     overflow-x:hidden;
 }
 #img1{
     width:100vw;
 }
 #sch-container{
-    width:400px;
+    width:950px;
+    border-top:14px solid black;
     border-right:14px solid black;
-    border-bottom:14px solid black;
-    height:100px;
+    height:2660px;
+}
+.blocks{
+    width:176px;
+    border-left: 14px solid black;
+    border-bottom: 14px solid black;
+    height:176px;
+    position:absolute;
+    text-align: center;
+    font-size:100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
 }
