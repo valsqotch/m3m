@@ -59,6 +59,7 @@ function update(){
         inf.innerText="多晚了";
     }
     else{
+        mark1.style.display="block";
         mark1.style.left = (dayNow-1)*190 + 14 + "px";
         mark1.style.top = ((hoursNow-8)*190) + (d.getMinutes()*3.16667) + 712 + "px";
         inf.innerText = "顯示";
