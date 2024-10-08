@@ -1,5 +1,10 @@
-const sch=document.getElementById("sch-container");
+const sch=document.getElementById("sch-container"),
+    inf=document.getElementById("info-container"),
+    mark1 = document.getElementById("mark1");
+const d=new Date();
 let num_id=0;
+/*console.log(fetch("https://portal.ncu.edu.tw/openid/user"))
+.then(res => console.log(res))*/
 const course = [0,1,1,1,0,2,2,3,3,3,0,0,0,0 ,0,4,0,0,0,5,5,10,10,10,0,0,0,0 ,0,0,2,2,6,7,11,11,0,0,0,0,0,0 ,0,5,4,4,0,0,0,0,0,0,4,0,0,0 ,8,8,7,7,6,0,9,9,9,0,0,0,0,0];
 const index1 = [null,"化","微","圖","英","程","服","中","體","廠","通1","通2"];
 const index2 = ["系館129","系館129","系館129","教研大樓001","教研大樓001","系館101","系館101","系館101","教研大樓A202","系館308","系館308","志希館202","志希館202","志希館202","教研大樓001","教研大樓001","系館101","實驗室153","綜教209","綜教209","系館128","工程二137","工程二137","教研A003","依仁YH1","依仁YH1","實驗室153","實驗室153","系館101","其他","其他","其他"]
@@ -8,7 +13,7 @@ for(let j=0;j<5;j++){ //chemisty, calculus, graphmaking, eng,5 programming, serv
         let tblock= document.createElement("div");
         tblock.classList+="blocks";
         tblock.style.left=j*190 + "px";
-        tblock.style.top=i*190 + 645 + "px";
+        tblock.style.top=i*190 + 0*645 + "px";
         if(i==0){
             tblock.style.backgroundColor="rgb(45,0,195)";
             tblock.style.color="yellow";
@@ -22,8 +27,11 @@ for(let j=0;j<5;j++){ //chemisty, calculus, graphmaking, eng,5 programming, serv
         }
         tblock.addEventListener("mouseover",function(){
             //this.style.backgroundColor = "black";
-            this.innerText=index2[this.id];
-            tblock.style.fontSize="36px";
+            if(this.innerText!=""){
+                this.innerText=index2[this.id];
+                 tblock.style.fontSize="36px";
+            }
+            
         })
         tblock.innerText=index1[course[i+14*j]];
         if(course[i+14*j]!=0){
@@ -34,3 +42,41 @@ for(let j=0;j<5;j++){ //chemisty, calculus, graphmaking, eng,5 programming, serv
         sch.appendChild(tblock);
     }
 }
+function update(){
+    let dayNow = d.getDay();
+    let hoursNow = d.getHours();
+    let tIndex = (dayNow-1)*14 + hoursNow-8;
+    if(dayNow==0){
+        inf.innerText = "是週日呢";
+    }
+    else if(dayNow==0){
+        inf.innerText = "是週六呢";
+    }
+    else if(hoursNow<=7){
+        inf.innerText="還早呢";
+    }
+    else if(hoursNow>=22){
+        inf.innerText="多晚了";
+    }
+    else{
+        mark1.style.left = (dayNow-1)*190 + 14 + "px";
+        mark1.style.top = ((hoursNow-8)*190) + (d.getMinutes()*3.16667) + 712 + "px";
+        inf.innerText = "顯示";
+        console.log(dayNow);
+        if(course[tIndex]==0){
+            while(course[tIndex+1]==0){
+                if(course[tIndex+1]%14==0){
+                    break;
+                }
+                tIndex++;
+            }
+            if((tIndex+1)%14==0){
+                inf.innerText="今天上完了呢"
+            }
+            else{
+                inf.innerText=((tIndex%14)+8) + "點有課";
+            }
+        }
+    }
+}
+update();
