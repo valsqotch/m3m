@@ -52,17 +52,16 @@ function update(){
     else if(dayNow==0){
         inf.innerText = "是週六呢";
     }
-    else if(hoursNow<=7){
+    else if(hoursNow<=7&&hoursNow>=4){
         inf.innerText="還早呢";
     }
-    else if(hoursNow>=22){
+    else if(hoursNow>=22||hoursNow<4){
         inf.innerText="多晚了";
     }
     else{
         mark1.style.display="block";
         mark1.style.left = (dayNow-1)*190 + 14 + "px";
         mark1.style.top = ((hoursNow-8)*190) + (d.getMinutes()*3.16667) + 712 + "px";
-        inf.innerText = "顯示";
         console.log(dayNow);
         if(course[tIndex]==0){
             while(course[tIndex+1]==0){
@@ -77,6 +76,9 @@ function update(){
             else{
                 inf.innerText=((tIndex%14)+8) + "點有課";
             }
+        }
+        else {
+            inf.innerText = "授業中";
         }
     }
 }
