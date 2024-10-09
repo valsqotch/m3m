@@ -65,7 +65,7 @@ function update(){
         console.log(dayNow);
         if(course[tIndex]==0){
             while(course[tIndex+1]==0){
-                if(course[tIndex+1]%14==0){
+                if([tIndex+1]%14==0){
                     break;
                 }
                 tIndex++;
@@ -82,4 +82,5 @@ function update(){
         }
     }
 }
+setInterval(60000,update());
 update();
