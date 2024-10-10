@@ -74,7 +74,7 @@ function update(){
                 inf.innerText="今天上完了呢"
             }
             else{
-                inf.innerText=((tIndex%14)+8) + "點有課";
+                inf.innerText=((tIndex%14)+9) + "點有課";
             }
         }
         else {
